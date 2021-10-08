@@ -1,0 +1,8 @@
+/* hide buttons on initial page*/
+input.show_later {
+                  visibility: hidden;
+}
+
+p.show_later {
+                  visibility: hidden;
+}
