@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+
+    <title>travel agent</title>
+
+    <!--import of the lightbox lib-->
+    <link rel="stylesheet" href="lightbox/dist/css/lightbox.min.css">
+    <script src="lightbox/dist/js/lightbox-plus-jquery.min.js"></script>
+
+    <!--dialogflow reference-->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <link rel="stylesheet" href="css/chatbot.css">
+
+    <df-messenger
+      intent="WELCOME"
+      agent-id="ae4d2cae-c702-4fbd-9dce-9e04ef8e7fc5"
+      language-code="de"
+      chat-title="Informationssystem für reisemedizinische Themen"
+      chat-icon="graphics/chatbot/tomy.png"
+      expand="True"
+    ></df-messenger>
+
+    <!--custom javascript & css-->
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/custom.js"></script>
+
+</head>
+<body>
+
+ <h1>Reisemedizinische Vorbesprechung</h1>
+
+
+ <a class="example-image-link" id="imagelink" href="graphics/maps_by_country/map_template.png" data-lightbox="example-1">
+     <img class="example-image" id="myImg" src="graphics/maps_by_country/map_template.png" width="800" height="400">
+ </a>
+
+  <p class="show_later" id="description" >Hinweis: Für eine vergrößerte und detailierte Darstellung Bild anklicken.</p>
+
+ <br>
+
+  <input type="submit" class="show_later" id="vaccination_button" value="Impftabelle" onclick="getvaccination()">
+  <input type="submit"  class="show_later" id="malaria_button" value="Malaria Karte" onclick="getmalaria()">
+  <input type="submit" class="show_later" id="yellowfever_button" value="Gelbfieber Karte" onclick="getyellowfever()">
+
+ <br>
+ <br>
+
+  <p>Für Fragen und Notizen:</p>
+
+  <textarea id="textArea" rows="4" cols="100"></textarea>
+
+ <br>
+
+  <input type="submit" value="Notizen an Arzt übermitteln">
+
+</body>
+</html>
