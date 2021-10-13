@@ -68,10 +68,20 @@ dfMessenger.addEventListener('df-request-sent', function (event) {
 dfMessenger.addEventListener('df-response-received', function (event) {
 
         var n = event.detail.response.queryResult.parameters;
-        var m = event.detail.response.queryResult.fulfillmentMessages[0].text.text;
+        var m = event.detail.response.queryResult.fulfillmentMessages[0]
         var f = event.detail.response.queryResult.fulfillmentText;
+        var infoCard = 0;
+        var text = 0;
 
-        console.log(event)
+        if (m.hasOwnProperty('payload')){
+        //console.log('this is a info-card alias CustomPayload')
+        infoCard = m.payload.richContent[0][0].title;
+        console.log(infoCard)
+        } else if (m.hasOwnProperty('text')) {
+        //console.log('this is a simple text message')
+        text = m.text.text[0]
+        console.log(text)
+        }
 
         var img_el = document.getElementById("myImg");
         var img_link = document.getElementById("imagelink");
@@ -159,7 +169,17 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         document.getElementById('description').style.visibility = 'visible';
         }
 
-        if ( m[0] == 'Ihr gewältes Land gilt nach WHO als Übertragungsgebiet für Gelbfieber. Eine Gelbfieber-Impfung ist für eine Reise nach Ghana verpflichtend und wird geprüft.') {
+        if ( infoCard == 'hohes Malaria Risiko' || infoCard == 'geringes-hohes Malaria Risiko') {
+        img_el.src = 'graphics/maps/malaria_compact.png';
+        img_link.href = "graphics/maps/malaria.png";
+        }
+
+        if (infoCard == 'geringes Malaria Risiko') {
+        img_el.src = 'graphics/maps/malaria_compact.png';
+        img_link.href = "graphics/maps/malaria.png";
+        }
+
+        if ( infoCard == 'Übertragungsgebiet für Gelbfieber' || infoCard == 'Gelbfieberübertragung im Tiefland möglich') {
         img_el.src = 'graphics/maps/yellowfever_compact.png';
         img_link.href = "graphics/maps/yellowfever.png";
         }
@@ -173,7 +193,7 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         document.getElementById('description').style.visibility = 'hidden';
         }
 
-        if ( f == "Wunderbar, im Schaubild auf Ihrem Bildschirm haben ich zum Abgleich eine Übersicht zusammengestellt." || f == "Für alle Reisende werden, neben der Gelbfieber Impfung, die Impfungen nach STIKO Empfehlung, sowie die Hapatitis B Impfung empfohlen. Je nach Reiseart und in Abhängigkeit Ihrer gesundheitlichen Situation können weitere Impfungen empfehlenswert sein."){
+        if ( text == "Im Schaubild auf Ihrem Bildschirm haben ich zum Abgleich eine Übersicht zusammengestellt." || infoCard == "empfohlene Impfungen:"){
         getvaccination()
         }
 
