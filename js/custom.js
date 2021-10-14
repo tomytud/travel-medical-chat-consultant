@@ -5,7 +5,7 @@ const dfMessenger = document.querySelector('df-messenger');
 const milliseconds = new Date()
 const dateObject = new Date(milliseconds)
 const humanDateFormat = dateObject.toLocaleString().split(", ")
-console.log(humanDateFormat)
+//console.log(humanDateFormat)
 console.log(dfMessenger)
 
 function getmalaria() {
