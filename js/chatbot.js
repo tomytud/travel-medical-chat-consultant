@@ -1,6 +1,7 @@
 
 const agent = document.querySelector('df-messenger');
 
+//manipulate chatbot input hint:
 agent.addEventListener('df-response-received', function (event) {
 
     if (event.detail.response.queryResult.action = "input.welcome") {
@@ -12,7 +13,6 @@ agent.addEventListener('df-response-received', function (event) {
     var text = 0;
 
     if (m.hasOwnProperty('text')) {
-        //console.log('this is a simple text message')
         text = m.text.text[0]
         console.log(text)
         }
