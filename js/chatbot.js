@@ -14,7 +14,6 @@ agent.addEventListener('df-response-received', function (event) {
 
     if (m.hasOwnProperty('text')) {
         text = m.text.text[0]
-        console.log(text)
         }
 
     if ( text == "Vielen Dank für die Kooperation. Nachfolgend finden Sie Ihre Checkliste zu relevanter Themen:"){

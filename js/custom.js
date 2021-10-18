@@ -6,7 +6,7 @@ const milliseconds = new Date()
 const dateObject = new Date(milliseconds)
 const humanDateFormat = dateObject.toLocaleString().split(", ")
 //console.log(humanDateFormat)
-console.log(dfMessenger)
+//console.log(dfMessenger)
 
 function getmalaria() {
 document.getElementById("myImg").src = "graphics/maps/malaria_compact.png";
@@ -76,12 +76,13 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         if (m.hasOwnProperty('payload')){
         //console.log('this is a info-card alias CustomPayload')
         infoCard = m.payload.richContent[0][0].title;
-        console.log(infoCard)
+        //console.log(infoCard)
         } else if (m.hasOwnProperty('text')) {
         //console.log('this is a simple text message')
         text = m.text.text[0]
-        console.log(text)
+        //console.log(text)
         }
+        console.log(n)
 
         var img_el = document.getElementById("myImg");
         var img_link = document.getElementById("imagelink");
@@ -169,7 +170,7 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         document.getElementById('description').style.visibility = 'visible';
         }
 
-        if ( infoCard == 'hohes Malaria Risiko' || infoCard == 'geringes-hohes Malaria Risiko') {
+        if ( infoCard == 'Achtung! - hohes Malaria Risiko' || infoCard == 'geringes-hohes Malaria Risiko') {
         img_el.src = 'graphics/maps/malaria_compact.png';
         img_link.href = "graphics/maps/malaria.png";
         }
