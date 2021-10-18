@@ -74,15 +74,15 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         var text = 0;
 
         if (m.hasOwnProperty('payload')){
-        //console.log('this is a info-card alias CustomPayload')
+        //this is a info-card alias CustomPayload
         infoCard = m.payload.richContent[0][0].title;
         //console.log(infoCard)
         } else if (m.hasOwnProperty('text')) {
-        //console.log('this is a simple text message')
+        //this is a simple text message
         text = m.text.text[0]
         //console.log(text)
         }
-        console.log(n)
+        console.log(event.detail.response.queryResult)
 
         var img_el = document.getElementById("myImg");
         var img_link = document.getElementById("imagelink");
@@ -108,6 +108,7 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         }
         if ( n.Country_Mh_Yt == 'Ghana') {
         country = 'ghana';
+        startContent('Ghana')
         img_el.src = 'graphics/maps_by_country/ghana.png';
         img_link.href = 'graphics/maps_by_country/ghana.png';
         document.getElementById('malaria_button').style.visibility = 'visible';
@@ -170,6 +171,9 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         document.getElementById('description').style.visibility = 'visible';
         }
 
+        if (n.hasOwnProperty('travel_expert')){
+        appendContent('Reiseerfahrung vorhanden', n.travel_expert)}
+
         if ( infoCard == 'Achtung! - hohes Malaria Risiko' || infoCard == 'geringes-hohes Malaria Risiko') {
         img_el.src = 'graphics/maps/malaria_compact.png';
         img_link.href = "graphics/maps/malaria.png";
@@ -202,8 +206,11 @@ dfMessenger.addEventListener('df-response-received', function (event) {
 
 //function to document client input
 var s1 = "";
-function appendContent(new_text) {
-        s1 = document.getElementById('textArea').value;
-        document.getElementById('textArea').value = s1.concat( "\n", new_text);
+function appendContent(parameter, new_text) {
+        s1 = document.getElementById('logs').value;
+        document.getElementById('logs').value = s1.concat( "\n",parameter+": "+new_text);
         console.log(s1);
+    }
+function startContent(new_text) {
+        document.getElementById('logs').value = "Land: "+new_text;
     }
