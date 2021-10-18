@@ -209,7 +209,7 @@ var s1 = "";
 function appendContent(parameter, new_text) {
         s1 = document.getElementById('logs').value;
         document.getElementById('logs').value = s1.concat( "\n",parameter+": "+new_text);
-        console.log(s1);
+        console.log('ok');
     }
 function startContent(new_text) {
         document.getElementById('logs').value = "Land: "+new_text;
