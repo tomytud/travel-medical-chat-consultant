@@ -19,45 +19,9 @@ document.getElementById("imagelink").href = "graphics/maps/yellowfever.png";
 }
 
 function getvaccination() {
-
-    if (country == 'bolivien'){
-    document.getElementById("myImg").src = "graphics/svg/bolivien_kompakt.svg";
-    document.getElementById("imagelink").href = "graphics/svg/bolivien.svg";
-    }
-    if (country == 'ecuador'){
-    document.getElementById("myImg").src = "graphics/svg/ecuador_kompakt.svg";
-    document.getElementById("imagelink").href = "graphics/svg/ecuador.svg";
-    }
-    if (country == 'ghana'){
-    document.getElementById("myImg").src = "graphics/svg/ghana_kompakt.svg";
-    document.getElementById("imagelink").href = "graphics/svg/ghana.svg";
-    }
-    if (country == 'namibia'){
-    document.getElementById("myImg").src = "graphics/svg/namibia_kompakt.svg";
-    document.getElementById("imagelink").href = "graphics/svg/namibia.svg";
-    }
-    if (country == 'peru'){
-    document.getElementById("myImg").src = "graphics/svg/peru_kompakt.svg";
-    document.getElementById("imagelink").href = "graphics/svg/peru.svg";
-    }
-    if (country == 'suedafrika'){
-    document.getElementById("myImg").src = "graphics/svg/suedafrika_kompakt.svg";
-    document.getElementById("imagelink").href = "graphics/svg/suedafrika.svg";
-    }
-    if (country == 'tansania'){
-    document.getElementById("myImg").src = "graphics/svg/tansania_kompakt.svg";
-    document.getElementById("imagelink").href = "graphics/svg/tansania.svg";
-    }
-    if (country == 'thailand'){
-    document.getElementById("myImg").src = "graphics/svg/thailand_kompakt.svg";
-    document.getElementById("imagelink").href = "graphics/svg/thailand.svg";
-    }
-    if (country == 'vietnam'){
-    document.getElementById("myImg").src = "graphics/svg/vietnam_kompakt.svg";
-    document.getElementById("imagelink").href = "graphics/svg/vietnam.svg";
-    }
-
-    }
+    document.getElementById("myImg").src = "graphics/svg/"+country+"_kompakt.svg";
+    document.getElementById("imagelink").href = "graphics/svg/"+country+".svg";
+}
 
 
 // Listener on User-Inputs:
@@ -73,6 +37,60 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         var infoCard = 0;
         var text = 0;
 
+        var img_el = document.getElementById("myImg");
+        var img_link = document.getElementById("imagelink");
+
+
+        if (n.hasOwnProperty('Country_Mr_Yt') || n.hasOwnProperty('Country_Mh_Yt')){ // Bolivien, Ecudor, Peru || Ghana
+            document.getElementById('vaccination_button').style.visibility = 'visible';
+            document.getElementById('malaria_button').style.visibility = 'visible';
+            document.getElementById('yellowfever_button').style.visibility = 'visible';
+            document.getElementById('description').style.visibility = 'visible';
+
+            switch (true) {
+            case n.hasOwnProperty('Country_Mh_Yt'):
+                startContent(n.Country_Mh_Yt)
+                country = n.Country_Mh_Yt.toLowerCase()
+                break;
+            case n.hasOwnProperty('Country_Mr_Yt'):
+                startContent(n.Country_Mr_Yt)
+                country = n.Country_Mr_Yt.toLowerCase()
+                break;
+            }
+
+            img_el.src = 'graphics/maps_by_country/'+country+'.png';
+            img_link.href = 'graphics/maps_by_country/'+country+'.png';
+        }
+
+        if (n.hasOwnProperty('Country_Mr_Ynt') || n.hasOwnProperty('Country_Ml_Ynt')){ // Namibia, Südafrika, Tansania || Thailand, Vietnam
+            document.getElementById('vaccination_button').style.visibility = 'visible';
+            document.getElementById('malaria_button').style.visibility = 'visible';
+            document.getElementById('yellowfever_button').style.visibility = 'hidden';
+            document.getElementById('description').style.visibility = 'visible';
+
+            switch (true) {
+            case n.hasOwnProperty('Country_Mr_Ynt'):
+                startContent(n.Country_Mr_Ynt)
+                country = n.Country_Mr_Ynt.toLowerCase()
+                if (country == 'südafrika') {
+                    country = 'suedafrika'
+                }
+                break;
+            case n.hasOwnProperty('Country_Ml_Ynt'):
+                startContent(n.Country_Ml_Ynt)
+                country = n.Country_Ml_Ynt.toLowerCase()
+                break;
+            }
+
+            img_el.src = 'graphics/maps_by_country/'+country+'.png';
+            img_link.href = 'graphics/maps_by_country/'+country+'.png';
+        }
+
+
+        if (n.hasOwnProperty('travel_expert')){
+        appendContent('Reiseerfahrung vorhanden', n.travel_expert)}
+
+
         if (m.hasOwnProperty('payload')){
         //this is a info-card alias CustomPayload
         infoCard = m.payload.richContent[0][0].title;
@@ -82,97 +100,7 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         text = m.text.text[0]
         //console.log(text)
         }
-        console.log(event.detail.response.queryResult)
-
-        var img_el = document.getElementById("myImg");
-        var img_link = document.getElementById("imagelink");
-
-        //display country-specific content:
-        if ( n.Country_Mr_Yt == 'Bolivien') {
-        country = 'bolivien';
-        img_el.src = 'graphics/maps_by_country/bolivien.png';
-        img_link.href = 'graphics/maps_by_country/bolivien.png';
-        document.getElementById('malaria_button').style.visibility = 'visible';
-        document.getElementById('yellowfever_button').style.visibility = 'visible';
-        document.getElementById('vaccination_button').style.visibility = 'visible';
-        document.getElementById('description').style.visibility = 'visible';
-        }
-        if ( n.Country_Mr_Yt == 'Ecuador') {
-        country = 'ecuador';
-        img_el.src = 'graphics/maps_by_country/ecuador.png';
-        img_link.href = 'graphics/maps_by_country/ecuador.png';
-        document.getElementById('malaria_button').style.visibility = 'visible';
-        document.getElementById('yellowfever_button').style.visibility = 'visible';
-        document.getElementById('vaccination_button').style.visibility = 'visible';
-        document.getElementById('description').style.visibility = 'visible';
-        }
-        if ( n.Country_Mh_Yt == 'Ghana') {
-        country = 'ghana';
-        startContent('Ghana')
-        img_el.src = 'graphics/maps_by_country/ghana.png';
-        img_link.href = 'graphics/maps_by_country/ghana.png';
-        document.getElementById('malaria_button').style.visibility = 'visible';
-        document.getElementById('yellowfever_button').style.visibility = 'visible';
-        document.getElementById('vaccination_button').style.visibility = 'visible';
-        document.getElementById('description').style.visibility = 'visible';
-        }
-        if ( n.Country_Mr_Ynt == 'Namibia') {
-        country = 'namibia';
-        img_el.src = 'graphics/maps_by_country/namibia.png';
-        img_link.href = 'graphics/maps_by_country/namibia.png';
-        document.getElementById('malaria_button').style.visibility = 'visible';
-        document.getElementById('yellowfever_button').style.visibility = 'hidden';
-        document.getElementById('vaccination_button').style.visibility = 'visible';
-        document.getElementById('description').style.visibility = 'visible';
-        }
-        if ( n.Country_Mr_Yt == 'Peru') {
-        country = 'peru';
-        img_el.src = 'graphics/maps_by_country/peru.png';
-        img_link.href = 'graphics/maps_by_country/peru.png';
-        document.getElementById('malaria_button').style.visibility = 'visible';
-        document.getElementById('yellowfever_button').style.visibility = 'visible';
-        document.getElementById('vaccination_button').style.visibility = 'visible';
-        document.getElementById('description').style.visibility = 'visible';
-        }
-        if ( n.Country_Mr_Ynt == 'Südafrika' ) {
-        country = 'suedafrika';
-        img_el.src = 'graphics/maps_by_country/suedafrika.png';
-        img_link.href = 'graphics/maps_by_country/suedafrika.png';
-        document.getElementById('malaria_button').style.visibility = 'visible';
-        document.getElementById('yellowfever_button').style.visibility = 'hidden';
-        document.getElementById('vaccination_button').style.visibility = 'visible';
-        document.getElementById('description').style.visibility = 'visible';
-        }
-        if ( n.Country_Mr_Ynt == 'Tansania') {
-        country = 'tansania';
-        img_el.src = 'graphics/maps_by_country/tansania.png';
-        img_link.href = 'graphics/maps_by_country/tansania.png';
-        document.getElementById('malaria_button').style.visibility = 'visible';
-        document.getElementById('yellowfever_button').style.visibility = 'hidden';
-        document.getElementById('vaccination_button').style.visibility = 'visible';
-        document.getElementById('description').style.visibility = 'visible';
-        }
-        if ( n.Country_Ml_Ynt == 'Thailand') {
-        country = 'thailand';
-        img_el.src = 'graphics/maps_by_country/thailand.png';
-        img_link.href = 'graphics/maps_by_country/thailand.png';
-        document.getElementById('malaria_button').style.visibility = 'visible';
-        document.getElementById('yellowfever_button').style.visibility = 'hidden';
-        document.getElementById('vaccination_button').style.visibility = 'visible';
-        document.getElementById('description').style.visibility = 'visible';
-        }
-        if ( n.Country_Ml_Ynt == 'Vietnam') {
-        country = 'vietnam';
-        img_el.src = 'graphics/maps_by_country/vietnam.png';
-        img_link.href = 'graphics/maps_by_country/vietnam.png';
-        document.getElementById('malaria_button').style.visibility = 'visible';
-        document.getElementById('yellowfever_button').style.visibility = 'hidden';
-        document.getElementById('vaccination_button').style.visibility = 'visible';
-        document.getElementById('description').style.visibility = 'visible';
-        }
-
-        if (n.hasOwnProperty('travel_expert')){
-        appendContent('Reiseerfahrung vorhanden', n.travel_expert)}
+        //console.log(event.detail.response.queryResult)
 
         if ( infoCard == 'Achtung! - hohes Malaria Risiko' || infoCard == 'geringes-hohes Malaria Risiko') {
         img_el.src = 'graphics/maps/malaria_compact.png';
@@ -202,15 +130,15 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         getvaccination()
         }
 
-        }); //Schleifenende des Listeners
+        }); //end of loop of the listener
 
-//function to document client input
+//function to log client input
 var s1 = "";
 function appendContent(parameter, new_text) {
         s1 = document.getElementById('logs').value;
         document.getElementById('logs').value = s1.concat( "\n",parameter+": "+new_text);
-        console.log('ok');
-    }
+}
+
 function startContent(new_text) {
         document.getElementById('logs').value = "Land: "+new_text;
-    }
+}
