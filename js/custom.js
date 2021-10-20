@@ -57,7 +57,6 @@ dfMessenger.addEventListener('df-response-received', function (event) {
             document.getElementById('malaria_button').style.visibility = 'visible';
             document.getElementById('malaria_table_button').style.visibility = 'visible';
             document.getElementById('yellowfever_button').style.visibility = 'visible';
-            document.getElementById('description').style.visibility = 'visible';
 
             switch (true) {
             case n.hasOwnProperty('Country_Mh_Yt'):
@@ -79,7 +78,6 @@ dfMessenger.addEventListener('df-response-received', function (event) {
             document.getElementById('malaria_button').style.visibility = 'visible';
             document.getElementById('malaria_table_button').style.visibility = 'visible';
             document.getElementById('yellowfever_button').style.visibility = 'hidden';
-            document.getElementById('description').style.visibility = 'visible';
 
             switch (true) {
             case n.hasOwnProperty('Country_Mr_Ynt'):
@@ -118,11 +116,13 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         if ( infoCard == 'Achtung! - hohes Malaria Risiko' || infoCard == 'geringes-hohes Malaria Risiko') {
         img_el.src = 'graphics/maps/malaria_compact.png';
         img_link.href = "graphics/maps/malaria.png";
+        document.getElementById('description').style.visibility = 'visible';
         }
 
         if (infoCard == 'geringes Malaria Risiko') {
         img_el.src = 'graphics/maps/malaria_compact.png';
         img_link.href = "graphics/maps/malaria.png";
+        document.getElementById('description').style.visibility = 'visible';
         }
 
         if ( infoCard == 'Übertragungsgebiet für Gelbfieber' || infoCard == 'Gelbfieberübertragung im Tiefland möglich') {
@@ -135,8 +135,13 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         img_link.href = "graphics/maps_by_country/map_template.png";
         document.getElementById('malaria_button').style.visibility = 'hidden';
         document.getElementById('yellowfever_button').style.visibility = 'hidden';
+        document.getElementById('malaria_table_button').style.visibility = 'hidden';
         document.getElementById('vaccination_button').style.visibility = 'hidden';
         document.getElementById('description').style.visibility = 'hidden';
+        }
+
+        if ( text == "In der Übersicht auf Ihrem Bildschirm sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || text == "In der Infografik sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || f == "Der behandelnde Arzt wird Ihnen empfohlene Schutzmaßnahmen für Ihre individuelle Reise aufzeigen. Sind Sie bereits vertraut mit möglichen Malariaprophylaxe?"){
+        getmalariatable()
         }
 
         if ( text == "Im Schaubild auf Ihrem Bildschirm haben ich zum Abgleich eine Übersicht zusammengestellt." || infoCard == "empfohlene Impfungen:"){
