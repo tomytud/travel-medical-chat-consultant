@@ -13,6 +13,17 @@ document.getElementById("myImg").src = "graphics/maps/malaria_compact.png";
 document.getElementById("imagelink").href = "graphics/maps/malaria.png";
 }
 
+function getmalariatable() {
+    if (country == "ghana") {
+    document.getElementById("myImg").src = "graphics/malaria_svg/malaria_high_compact.svg";
+    document.getElementById("imagelink").href = "graphics/malaria_svg/malaria_high.svg";
+    } else {
+    document.getElementById("myImg").src = "graphics/malaria_svg/malaria_minor_compact.svg";
+    document.getElementById("imagelink").href = "graphics/malaria_svg/malaria_minor.svg";
+    }
+
+}
+
 function getyellowfever() {
 document.getElementById("myImg").src = "graphics/maps/yellowfever_compact.png";
 document.getElementById("imagelink").href = "graphics/maps/yellowfever.png";
@@ -44,6 +55,7 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         if (n.hasOwnProperty('Country_Mr_Yt') || n.hasOwnProperty('Country_Mh_Yt')){ // Bolivien, Ecudor, Peru || Ghana
             document.getElementById('vaccination_button').style.visibility = 'visible';
             document.getElementById('malaria_button').style.visibility = 'visible';
+            document.getElementById('malaria_table_button').style.visibility = 'visible';
             document.getElementById('yellowfever_button').style.visibility = 'visible';
             document.getElementById('description').style.visibility = 'visible';
 
@@ -65,6 +77,7 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         if (n.hasOwnProperty('Country_Mr_Ynt') || n.hasOwnProperty('Country_Ml_Ynt')){ // Namibia, Südafrika, Tansania || Thailand, Vietnam
             document.getElementById('vaccination_button').style.visibility = 'visible';
             document.getElementById('malaria_button').style.visibility = 'visible';
+            document.getElementById('malaria_table_button').style.visibility = 'visible';
             document.getElementById('yellowfever_button').style.visibility = 'hidden';
             document.getElementById('description').style.visibility = 'visible';
 
