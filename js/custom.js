@@ -97,9 +97,27 @@ dfMessenger.addEventListener('df-response-received', function (event) {
             img_link.href = 'graphics/maps_by_country/'+country+'.png';
         }
 
-
+        //get answers for logging and knowledge transition
         if (n.hasOwnProperty('travel_expert')){
         appendContent('Reiseerfahrung vorhanden', n.travel_expert)}
+
+        if (n.hasOwnProperty('malaria_knowledge')){
+        appendContent('Prophylaxewissen vorhanden', n.malaria_knowledge)}
+
+        if (n.hasOwnProperty('chemoprohylaxis')){
+        appendContent('Chemoprophylaxe', n.chemoprohylaxis)}
+
+        if (n.hasOwnProperty('exposure_prophylaxis')){
+        appendContent('Expositionsprophylaxe', n.exposure_prophylaxis)}
+
+        if (n.hasOwnProperty('vaccination_knowledge')){
+        appendContent('Impfwissen vorhanden', n.vaccination)}
+
+        if (n.hasOwnProperty('hygiene_knowledge')){
+        appendContent('Hygienewissen vorhanden', n.hygiene_knowledge)}
+
+        if (n.hasOwnProperty('adventure_plan')){
+        appendContent('Erlebnisreise geplant', n.adventure_plan)}
 
 
         if (m.hasOwnProperty('payload')){
