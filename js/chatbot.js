@@ -13,12 +13,17 @@ agent.addEventListener('df-response-received', function (event) {
     var text = 0;
 
     if (m.hasOwnProperty('text')) {
-        text = m.text.text[0]
+        text = m.text.text[0];
         }
 
     if ( text == "Vielen Dank für die Kooperation. Nachfolgend finden Sie Ihre Checkliste zu relevanter Themen:"){
         inputHint = agent.shadowRoot.querySelector("df-messenger-chat").shadowRoot.querySelector("df-messenger-user-input").shadowRoot.querySelector(".input-box-wrapper > input")
         inputHint.placeholder ="Frage eingeben"
+        }
+
+    if ( text == "Ich bin ein Reisemedizin-Assistent und werde Sie in den nächsten 2 Minuten auf das Arztgespräch vorbereiten und länderspezifische Themen zu Fernreisen vortellen."){
+        console.log('Test')
+        //document.querySelector("df-messenger").shadowRoot.querySelector("df-messenger-chat").shadowRoot.querySelector("df-message-list").shadowRoot.querySelector(".message").innerText = 'So müsste eigentlich der Text manipuliert werden können.'
         }
 
     });
