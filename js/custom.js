@@ -102,16 +102,13 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         appendContent('Reiseerfahrung vorhanden', n.travel_expert)}
 
         if (n.hasOwnProperty('malaria_knowledge')){
-        appendContent('Prophylaxewissen vorhanden', n.malaria_knowledge)}
+        appendContent('Malaria-Prophylaxewissen vorhanden', n.malaria_knowledge)}
 
-        if (n.hasOwnProperty('chemoprohylaxis')){
-        appendContent('Chemoprophylaxe', n.chemoprohylaxis)}
-
-        if (n.hasOwnProperty('exposure_prophylaxis')){
-        appendContent('Expositionsprophylaxe', n.exposure_prophylaxis)}
+        if (n.hasOwnProperty('malaria_advice')){
+        appendContent('benötigte Malariaberatung', n.malaria_advice)}
 
         if (n.hasOwnProperty('vaccination_knowledge')){
-        appendContent('Impfwissen vorhanden', n.vaccination)}
+        appendContent('Impfwissen vorhanden', n.vaccination_knowledge)}
 
         if (n.hasOwnProperty('hygiene_knowledge')){
         appendContent('Hygienewissen vorhanden', n.hygiene_knowledge)}
@@ -158,11 +155,11 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         document.getElementById('description').style.visibility = 'hidden';
         }
 
-        if ( text == "In der Übersicht auf Ihrem Bildschirm sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || text == "In der Infografik sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || f == "Der behandelnde Arzt wird Ihnen empfohlene Schutzmaßnahmen für Ihre individuelle Reise aufzeigen. Sind Sie bereits vertraut mit möglichen Malariaprophylaxe?"){
+        if ( text == "In der Übersicht auf Ihrem Bildschirm sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || text == "In der Infografik sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || f == "Der behandelnde Arzt wird Ihnen empfohlene Schutzmaßnahmen für Ihre individuelle Reise aufzeigen. Sind Sie bereits vertraut mit möglichen Malariaprophylaxe?" || f == "Sind Sie vertraut mit möglichen Schutzmaßnahmen (siehe Schaubild)?" || text == "In Ghana wird sowohl eine Expositionsprophylaxe (Mückenstiche vermeiden) als auch eine Chemoprophylaxe (medikamentös) empfohlen."){
         getmalariatable()
         }
 
-        if ( text == "Im Schaubild auf Ihrem Bildschirm haben ich zum Abgleich eine Übersicht zusammengestellt." || infoCard == "empfohlene Impfungen:"){
+        if ( text == "Im Schaubild auf Ihrem Bildschirm haben ich zum Abgleich eine Übersicht relevanter Impfungen zusammengefasst." || infoCard == "empfohlene Impfungen:"){
         getvaccination()
         }
 
