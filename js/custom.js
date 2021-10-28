@@ -173,5 +173,6 @@ function appendContent(parameter, new_text) {
 }
 
 function startContent(new_text) {
-        document.getElementById('logs').value = "Land: "+new_text;
+        var session = dfMessenger.getAttribute("session-id").split("-")[1]
+        document.getElementById('logs').value = "Session-ID: "+session+"\nLand: "+new_text;
 }
