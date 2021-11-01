@@ -2,11 +2,12 @@
 const dfMessenger = document.querySelector('df-messenger');
 
 //get timestamp:
-const milliseconds = new Date()
-const dateObject = new Date(milliseconds)
-const humanDateFormat = dateObject.toLocaleString().split(", ")
+const milliseconds = new Date();
+const dateObject = new Date(milliseconds);
+const humanDateFormat = dateObject.toLocaleString().split(", ");
 //console.log(humanDateFormat)
 //console.log(dfMessenger)
+var last_question = '';
 
 function getmalaria() {
 document.getElementById("myImg").src = "graphics/maps/malaria_compact.png";
@@ -37,6 +38,15 @@ function getvaccination() {
 
 // Listener on User-Inputs:
 dfMessenger.addEventListener('df-request-sent', function (event) {
+
+        var req = event.detail.requestBody.queryInput;
+        if (req.hasOwnProperty('text')) {
+            if (req.text.hasOwnProperty('text')) {
+                console.log(req.text.text);
+                last_question = req.text.text;
+                }
+        }
+
 });
 
 // Listener on Dialogflow-Outputs:
@@ -123,7 +133,8 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         //console.log(infoCard)
         } else if (m.hasOwnProperty('text')) {
         //this is a simple text message
-        text = m.text.text[0]
+        text = m.text.text[0];
+        check_response(text);
         //console.log(text)
         }
         //console.log(event.detail.response.queryResult)
@@ -163,13 +174,30 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         getvaccination()
         }
 
+        function check_response(text) {
+            if ( text == "Bitte Fragen Sie das den Arzt."){
+                appendQuestion();
+            }
+        }
+
         }); //end of loop of the listener
 
 //function to log client input
 var s1 = "";
+var s2 = "";
+
 function appendContent(parameter, new_text) {
         s1 = document.getElementById('logs').value;
         document.getElementById('logs').value = s1.concat( "\n",parameter+": "+new_text);
+}
+
+function appendQuestion() {
+        s2 = document.getElementById('textArea').value;
+        if (s2 == ""){
+        document.getElementById('textArea').value = s2.concat( "unbeantwortete Nutzereingabe: "+last_question);
+        }else {
+        document.getElementById('textArea').value = s2.concat( "\nunbeantwortete Nutzereingabe: "+last_question);
+        }
 }
 
 function startContent(new_text) {
