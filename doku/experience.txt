@@ -1,0 +1,35 @@
+{
+  "richContent": [
+    [
+      {
+        "options": [
+          {
+            "text": "keins",
+            "image": {
+              "src": {
+                "rawUrl": "https://img.icons8.com/ios/50/000000/thumbs-down.png"
+              }
+            }
+          },
+          {
+            "image": {
+              "src": {
+                "rawUrl": "https://img.icons8.com/ios/50/000000/tiny.png"
+              }
+            },
+            "text": "etwas"
+          },
+          {
+            "image": {
+              "src": {
+                "rawUrl": "https://img.icons8.com/ios/50/000000/thumb-up--v1.png"
+              }
+            },
+            "text": "viel"
+          }
+        ],
+        "type": "chips"
+      }
+    ]
+  ]
+}

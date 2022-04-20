@@ -1,0 +1,27 @@
+{
+  "richContent": [
+    [
+      {
+        "type": "chips",
+        "options": [
+          {
+            "text": "Ja",
+            "image": {
+              "src": {
+                "rawUrl": "https://img.icons8.com/ios/50/000000/checked--v1.png"
+              }
+            }
+          },
+          {
+            "image": {
+              "src": {
+                "rawUrl": "https://img.icons8.com/ios/50/000000/cancel.png"
+              }
+            },
+            "text": "Nein"
+          }
+        ]
+      }
+    ]
+  ]
+}

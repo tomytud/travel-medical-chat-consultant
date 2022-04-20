@@ -1,6 +1,6 @@
 /* define chatbot surface*/
 df-messenger {
-            --df-messenger-bot-message: #0077ae; /*blau*/
+            --df-messenger-bot-message: #00305d; /*blau*/
             --df-messenger-button-titlebar-color: #00305d; /*dunkelblau*/
             --df-messenger-chat-background-color: #fafafa; /*hellgrau*/
             --df-messenger-font-color: white;

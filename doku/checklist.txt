@@ -1,0 +1,19 @@
+{
+  "richContent": [
+    [
+      {
+        "type": "chips",
+        "options": [
+          {
+            "text": "Checkliste",
+            "image": {
+              "src": {
+                "rawUrl": "https://img.icons8.com/ios/50/000000/checklist--v1.png"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  ]
+}

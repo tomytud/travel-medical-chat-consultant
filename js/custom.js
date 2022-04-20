@@ -8,6 +8,7 @@ const humanDateFormat = dateObject.toLocaleString().split(", ");
 //console.log(humanDateFormat)
 //console.log(dfMessenger)
 var last_question = '';
+var country = 'peru';
 
 function getmalaria() {
 document.getElementById("myImg").src = "graphics/maps/malaria_compact.png";
@@ -166,7 +167,7 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         document.getElementById('description').style.visibility = 'hidden';
         }
 
-        if ( text == "In der Übersicht auf Ihrem Bildschirm sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || text == "In der Infografik sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || f == "Der behandelnde Arzt wird Ihnen empfohlene Schutzmaßnahmen für Ihre individuelle Reise aufzeigen. Sind Sie bereits vertraut mit möglichen Malariaprophylaxe?" || f == "Sind Sie vertraut mit möglichen Schutzmaßnahmen (siehe Schaubild)?" || text == "In Ghana wird sowohl eine Expositionsprophylaxe (Mückenstiche vermeiden) als auch eine Chemoprophylaxe (medikamentös) empfohlen."){
+        if ( text == "In der Übersicht auf Ihrem Bildschirm sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || text == "In der Infografik sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || f == "Der behandelnde Arzt wird Ihnen empfohlene Schutzmaßnahmen für Ihre individuelle Reise aufzeigen. Sind Sie bereits vertraut mit möglichen Malariaprophylaxe?" || f == "Sind Sie vertraut mit möglichen Schutzmaßnahmen (siehe Schaubild)?" || text == "In Ghana wird sowohl eine Expositionsprophylaxe (Mückenstiche vermeiden) als auch eine Chemoprophylaxe (medikamentös) empfohlen." || text == "Okay, kommen wir zum 1. Thema: Malaria Risiko"){
         getmalariatable()
         }
 
