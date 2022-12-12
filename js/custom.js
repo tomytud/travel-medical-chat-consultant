@@ -11,8 +11,10 @@ var last_question = '';
 var country = 'peru';
 
 function getmalaria() {
-document.getElementById("myImg").src = "graphics/maps/malaria_compact.png";
-document.getElementById("imagelink").href = "graphics/maps/malaria.png";
+document.getElementById("myImg").src = "graphics/peru/peru_malaria.png";
+document.getElementById("imagelink").href = "graphics/peru/peru_malaria.png";
+//document.getElementById("myImg").src = "graphics/maps/malaria_compact.png";
+//document.getElementById("imagelink").href = "graphics/maps/malaria.png";
 }
 
 function getmalariatable() {
@@ -27,8 +29,10 @@ function getmalariatable() {
 }
 
 function getyellowfever() {
-document.getElementById("myImg").src = "graphics/maps/yellowfever_compact.png";
-document.getElementById("imagelink").href = "graphics/maps/yellowfever.png";
+document.getElementById("myImg").src = "graphics/peru/peru_gelbfieber.png";
+document.getElementById("imagelink").href = "graphics/peru/peru_gelbfieber.png";
+//document.getElementById("myImg").src = "graphics/maps/yellowfever_compact.png";
+//document.getElementById("imagelink").href = "graphics/maps/yellowfever.png";
 }
 
 function getvaccination() {
@@ -41,6 +45,7 @@ function getvaccination() {
 dfMessenger.addEventListener('df-request-sent', function (event) {
 
         var req = event.detail.requestBody.queryInput;
+        console.log(req);
         if (req.hasOwnProperty('text')) {
             if (req.text.hasOwnProperty('text')) {
                 console.log(req.text.text);
@@ -56,57 +61,26 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         var n = event.detail.response.queryResult.parameters;
         var m = event.detail.response.queryResult.fulfillmentMessages[0]
         var f = event.detail.response.queryResult.fulfillmentText;
+        console.log(event.detail.response.queryResult);
+        console.log(event.detail.response.queryResult.intent.displayName);
         var infoCard = 0;
         var text = 0;
 
         var img_el = document.getElementById("myImg");
         var img_link = document.getElementById("imagelink");
 
-
-        if (n.hasOwnProperty('Country_Mr_Yt') || n.hasOwnProperty('Country_Mh_Yt')){ // Bolivien, Ecudor, Peru || Ghana
+        if (event.detail.response.queryResult.intent.displayName == "2_Malaria"){
             document.getElementById('vaccination_button').style.visibility = 'visible';
             document.getElementById('malaria_button').style.visibility = 'visible';
             document.getElementById('malaria_table_button').style.visibility = 'visible';
             document.getElementById('yellowfever_button').style.visibility = 'visible';
-
-            switch (true) {
-            case n.hasOwnProperty('Country_Mh_Yt'):
-                startContent(n.Country_Mh_Yt)
-                country = n.Country_Mh_Yt.toLowerCase()
-                break;
-            case n.hasOwnProperty('Country_Mr_Yt'):
-                startContent(n.Country_Mr_Yt)
-                country = n.Country_Mr_Yt.toLowerCase()
-                break;
+            document.getElementById('description').style.visibility = 'visible';
             }
 
-            img_el.src = 'graphics/maps_by_country/'+country+'.png';
-            img_link.href = 'graphics/maps_by_country/'+country+'.png';
+        if (event.detail.response.queryResult.intent.displayName == "4a_Vaccination-Yes" || event.detail.response.queryResult.intent.displayName == "4b_Vaccination-No"){
+        getvaccination();
         }
 
-        if (n.hasOwnProperty('Country_Mr_Ynt') || n.hasOwnProperty('Country_Ml_Ynt')){ // Namibia, Südafrika, Tansania || Thailand, Vietnam
-            document.getElementById('vaccination_button').style.visibility = 'visible';
-            document.getElementById('malaria_button').style.visibility = 'visible';
-            document.getElementById('malaria_table_button').style.visibility = 'visible';
-            document.getElementById('yellowfever_button').style.visibility = 'hidden';
-
-            switch (true) {
-            case n.hasOwnProperty('Country_Mr_Ynt'):
-                startContent(n.Country_Mr_Ynt)
-                country = n.Country_Mr_Ynt.toLowerCase()
-                if (country == 'südafrika') {
-                    country = 'suedafrika'
-                }
-                break;
-            case n.hasOwnProperty('Country_Ml_Ynt'):
-                startContent(n.Country_Ml_Ynt)
-                country = n.Country_Ml_Ynt.toLowerCase()
-                break;
-            }
-
-            img_el.src = 'graphics/maps_by_country/'+country+'.png';
-            img_link.href = 'graphics/maps_by_country/'+country+'.png';
-        }
 
         //get answers for logging and knowledge transition
         if (n.hasOwnProperty('travel_expert')){
@@ -115,17 +89,28 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         if (n.hasOwnProperty('malaria_knowledge')){
         appendContent('Malaria-Prophylaxewissen vorhanden', n.malaria_knowledge)}
 
-        if (n.hasOwnProperty('malaria_advice')){
-        appendContent('benötigte Malariaberatung', n.malaria_advice)}
+        if (event.detail.response.queryResult.intent.displayName == "3a_lowlands"){
+        appendContent('Reiseroute', 'peruanisches Tiefland - Amazonasdelta');
+        getyellowfever();
+        }
+        if (event.detail.response.queryResult.intent.displayName == "3b_Coast"){
+        appendContent('Reiseroute', 'Küstengebiete');
+        getyellowfever();
+        }
+        if (event.detail.response.queryResult.intent.displayName == "3c_Highlands-Citys"){
+        appendContent('Reiseroute', 'Hochland & Touristikgebiete');
+        getyellowfever();
+        }
+        if (event.detail.response.queryResult.intent.displayName == "3d_Basics(default)"){
+        appendContent('Reiseroute', 'gesamtes Land');
+        getyellowfever();
+        }
 
         if (n.hasOwnProperty('vaccination_knowledge')){
         appendContent('Impfwissen vorhanden', n.vaccination_knowledge)}
 
         if (n.hasOwnProperty('hygiene_knowledge')){
         appendContent('Hygienewissen vorhanden', n.hygiene_knowledge)}
-
-        if (n.hasOwnProperty('adventure_plan')){
-        appendContent('Erlebnisreise geplant', n.adventure_plan)}
 
 
         if (m.hasOwnProperty('payload')){
@@ -167,7 +152,7 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         document.getElementById('description').style.visibility = 'hidden';
         }
 
-        if ( text == "In der Übersicht auf Ihrem Bildschirm sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || text == "In der Infografik sind die wichtigsten Maßnahmen zusammengefasst. Der beratende Arzt wird mit Ihnen alle relevanten Schutzmaßnahmen für Ihre Reise besprechen." || f == "Der behandelnde Arzt wird Ihnen empfohlene Schutzmaßnahmen für Ihre individuelle Reise aufzeigen. Sind Sie bereits vertraut mit möglichen Malariaprophylaxe?" || f == "Sind Sie vertraut mit möglichen Schutzmaßnahmen (siehe Schaubild)?" || text == "In Ghana wird sowohl eine Expositionsprophylaxe (Mückenstiche vermeiden) als auch eine Chemoprophylaxe (medikamentös) empfohlen." || text == "Okay, kommen wir zum 1. Thema: Malaria Risiko"){
+        if (text == "Okay, kommen wir zum 1. Thema: Malaria Risiko"){
         getmalariatable()
         }
 
