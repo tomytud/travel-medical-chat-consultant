@@ -18,13 +18,13 @@ document.getElementById("imagelink").href = "graphics/peru/peru_malaria.png";
 }
 
 function getmalariatable() {
-    if (country == "ghana") {
-    document.getElementById("myImg").src = "graphics/malaria_svg/malaria_high_compact.svg";
-    document.getElementById("imagelink").href = "graphics/malaria_svg/malaria_high.svg";
-    } else {
-    document.getElementById("myImg").src = "graphics/malaria_svg/malaria_minor_compact.svg";
+    //if (country == "ghana") {
+    //document.getElementById("myImg").src = "graphics/malaria_svg/malaria_high_compact.svg";
+    //document.getElementById("imagelink").href = "graphics/malaria_svg/malaria_high.svg";
+    //} else {
+    document.getElementById("myImg").src = "graphics/peru/peru_prophylaxe.png";
     document.getElementById("imagelink").href = "graphics/malaria_svg/malaria_minor.svg";
-    }
+    //}
 
 }
 
@@ -36,7 +36,8 @@ document.getElementById("imagelink").href = "graphics/peru/peru_gelbfieber.png";
 }
 
 function getvaccination() {
-    document.getElementById("myImg").src = "graphics/svg/"+country+"_kompakt.svg";
+    document.getElementById("myImg").src = "graphics/peru/peru_impftabelle.png";
+    //document.getElementById("myImg").src = "graphics/svg/"+country+"_kompakt.svg";
     document.getElementById("imagelink").href = "graphics/svg/"+country+".svg";
 }
 
@@ -165,10 +166,17 @@ dfMessenger.addEventListener('df-response-received', function (event) {
 //function to log client input
 var s1 = "";
 var s2 = "";
+var index = 0;
 
 function appendContent(parameter, new_text) {
         s1 = document.getElementById('logs').value;
+        if (index == 0){
+        document.getElementById('logs').value = s1.concat(parameter+": "+new_text);
+        index = 1;
+        }else{
         document.getElementById('logs').value = s1.concat( "\n",parameter+": "+new_text);
+        }
+
 }
 
 function appendQuestion() {

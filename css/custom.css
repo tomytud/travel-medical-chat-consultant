@@ -1,3 +1,28 @@
+body {
+  font-family: 'Anton', serif;
+}
+
+img
+{border-style: solid;
+ border-color: black;
+ }
+
+h4
+{
+   font-family: 'Roboto', sans-serif;
+}
+
+p
+{
+   font-family: 'Roboto', sans-serif;
+}
+
+textarea
+{
+   font-family: 'Roboto', sans-serif;
+}
+
+
 /* hide buttons on initial page*/
 input.show_later {
                   visibility: hidden;
@@ -5,4 +30,44 @@ input.show_later {
 
 p.show_later {
                   visibility: hidden;
+}
+
+.top{
+font-size: 8px;
+padding: 0px;
+}
+
+.content{
+padding: 10px;
+padding-top: 0px;
+display: inline-block;
+}
+
+.content-left{
+padding: 10px;
+display: inline-block;
+vertical-align: top;
+}
+.content-right{
+padding: 10px;
+padding-right: 5%;
+display: inline-block;
+vertical-align: top;
+float: right;
+}
+
+.intro-top{
+background-color:  #d5f5e3 ;
+}
+
+.grafic-top{
+background-color:  #f9e79f ;
+}
+
+.note-top{
+background-color:  #f6ddcc ;
+}
+
+.logging-top{
+background-color: #d6eaf8;
 }

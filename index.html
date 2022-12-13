@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <title>travel agent</title>
 
     <!--import of the lightbox lib-->
@@ -18,7 +24,7 @@
       intent="WELCOME"
       agent-id="b99f3e32-d35d-42b6-aea6-baf751964346"
       language-code="de"
-      chat-title="Assistent der Reisemedizin"
+      chat-title="Chat-Assistent der Reisemedizin"
       chat-icon="graphics/chatbot/tomy.png"
       expand="True"
     ></df-messenger>
@@ -33,38 +39,53 @@
 </head>
 <body>
 
- <h1>Reisemedizinische Vorbesprechung - Peru</h1>
- <h5>Bauen Sie initiales Wissen auf, identifizieren Sie Wissenslücken und entwickeln Sie Fragen für die ärztliche Beratung.</h5>
- <a class="example-image-link" id="imagelink" href="graphics/maps_by_country/peru.png" data-lightbox="example-1">
-     <img class="example-image" id="myImg" src="graphics/maps_by_country/peru.png" width="800" height="400">
- </a>
-
-  <p class="show_later" id="description" >Hinweis: Für eine vergrößerte und detailierte Darstellung Bild anklicken.</p>
-
- <br>
-
-  <input type="submit" class="show_later" id="vaccination_button" value="Impftabelle" onclick="getvaccination()">
-  <input type="submit"  class="show_later" id="malaria_button" value="Malaria Karte" onclick="getmalaria()">
-  <input type="submit"  class="show_later" id="malaria_table_button" value="Malaria Prophylaxe" onclick="getmalariatable()">
-  <input type="submit" class="show_later" id="yellowfever_button" value="Gelbfieber Karte" onclick="getyellowfever()">
-
- <br>
- <br>
-
-  <p>Für Fragen und Notizen:</p>
-
-  <textarea id="textArea" rows="4" cols="100"></textarea>
-
- <br>
-
-  <input type="submit" value="Notizen an Arzt übermitteln">
+<div class="intro-top">
+    <p class="top" >Introduction</p>
+    <div class="content">
+    <h1>Prototypische Implementierung für die Reisemedizinische Vorbesprechung - Peru</h1>
+    <h4>Bauen Sie initiales Wissen auf, identifizieren Sie Wissenslücken und entwickeln Sie Fragen für die ärztliche Beratung.</h4>
+    </div>
+</div>
 
 
- <br>
- <br>
- <p>Logging: (Repräsentation der Transition des generierten Wissens)</p>
- <textarea id="logs" rows="8" cols="100"></textarea>
+<div class="grafic-top">
+    <p class="top" >Vizulisation</p>
+     <div class="content-left">
+        <a class="example-image-link" id="imagelink" href="graphics/maps_by_country/peru.png" data-lightbox="example-1">
+        <img class="example-image" id="myImg" src="graphics/maps_by_country/peru.png" width="800" height="400">
+        </a>
+        <p class="show_later" id="description" >Hinweis: Für eine vergrößerte und detailierte Darstellung Bild anklicken.</p>
+        <br>
+        <input type="submit" class="show_later" id="vaccination_button" value="Impftabelle" onclick="getvaccination()">
+        <input type="submit"  class="show_later" id="malaria_button" value="Malaria Karte" onclick="getmalaria()">
+        <input type="submit"  class="show_later" id="malaria_table_button" value="Malaria Prophylaxe" onclick="getmalariatable()">
+        <input type="submit" class="show_later" id="yellowfever_button" value="Gelbfieber Karte" onclick="getyellowfever()">
+     </div>
+    <div class="content-right">
+        <!--integrated chatbot
+        <iframe width="800" height="400"
+            src="https://console.dialogflow.com/api-client/demo/embedded/b99f3e32-d35d-42b6-aea6-baf751964346">
+        </iframe>
+        -->
+    </div>
+</div>
+<div class="note-top">
+    <p class="top" >User-Notes</p>
+     <div  class="content" >
+         <p>Für Fragen und Notizen:</p>
+         <textarea id="textArea" rows="4" cols="100"></textarea>
+         <br>
+         <input type="submit" value="Notizen an Arzt übermitteln">
+     </div>
+</div>
 
+<div class="logging-top">
+    <p class="top" >Logging-from-Chat</p>
+    <div class="content">
+        <p>Logging: (Repräsentation der Transition des abgefragten Wissens)</p>
+        <textarea id="logs" rows="8" cols="100"></textarea>
+    </div>
+</div>
 
 </body>
 </html>
