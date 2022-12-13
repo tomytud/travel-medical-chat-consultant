@@ -1,6 +1,6 @@
-#Early state model – Designkonzeption
+# Early state model – Designkonzeption
 
-###Dokumentation zur Weboberfläche
+### Dokumentation zur Weboberfläche
 
 Diese Dokumentation dient der Vorstellung der, zum gegenwertigen Zeitpunkt realisierten, Weboberfläche zu meiner Diplomarbeit: "Design of a Digital Assistant for 
 Pre-Consultation for Country-Specific Travel Medicine". 
