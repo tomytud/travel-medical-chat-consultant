@@ -69,7 +69,8 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         var img_el = document.getElementById("myImg");
         var img_link = document.getElementById("imagelink");
 
-        if (event.detail.response.queryResult.intent.displayName == "2_Malaria"){
+        if (event.detail.response.queryResult.intent.displayName == "2a_Malaria-Yes" || event.detail.response.queryResult.intent.displayName == "2b_Malaria-No"){
+            getmalariatable();
             document.getElementById('vaccination_button').style.visibility = 'visible';
             document.getElementById('malaria_button').style.visibility = 'visible';
             document.getElementById('malaria_table_button').style.visibility = 'visible';
@@ -152,13 +153,6 @@ dfMessenger.addEventListener('df-response-received', function (event) {
         document.getElementById('description').style.visibility = 'hidden';
         }
 
-        if (text == "Okay, kommen wir zum 1. Thema: Malaria Risiko"){
-        getmalariatable()
-        }
-
-        if ( text == "Im Schaubild auf Ihrem Bildschirm haben ich zum Abgleich eine Übersicht relevanter Impfungen zusammengefasst." || infoCard == "empfohlene Impfungen:"){
-        getvaccination()
-        }
 
         function check_response(text) {
             if ( text == "Bitte Fragen Sie das den Arzt."){
