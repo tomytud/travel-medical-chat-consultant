@@ -1,0 +1,29 @@
+{
+  "richContent": [
+    [
+      {
+        "options": [
+          {
+            "text": "Findsch",
+            "image": {
+              "src": {
+                "rawUrl": "https://findsch-gudd.de"
+              }
+            },
+            "link": "https://example.com"
+          },
+          {
+            "text": "Gudd",
+            "image": {
+              "src": {
+                "rawUrl": "https://findsch-gudd.de"
+              }
+            },
+            "link": "https://findsch-gudd.de"
+          }
+        ],
+        "type": "chips"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "richContent": [
+    [
+      {
+        "type": "chips",
+        "options": [
+          {
+            "text": "ja"
+          },
+          {
+            "text": "nein"
+          }
+        ]
+      }
+    ]
+  ]
+}
+{
+  "richContent": [
+    [
+      {
+        "title": "Checkliste",
+        "text": [
+          "1)Malaria: regionalabhängiges Risiko",
+          "2)Impfung: STIKO, Hepatitis A & Gelbfieber",
+          "3)Hygiene: Lebensmittel bewusst verzehren"
+        ],
+        "type": "description"
+      } Ich bedanke mich für Ihre Teilnahme, hoffe Sie konnten etwas lernen.
+    ]
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "richContent": [
+    [
+      {
+        "options": [
+          {
+            "text": "malaria"
+          },
+          {
+            "text": "hygiene"
+          },
+          {
+            "text": "unterschätzte themen"
+          },
+          {
+            "text": "impfung"
+          }
+        ],
+        "type": "chips"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "richContent": [
+    [
+      {
+        "type": "description",
+        "title": "Formating:",
+        "text": [
+          "how to make a linebreak: \n and move on",
+          "use 'quotes'"
+        ]
+      },
+      {
+        "type": "description",
+        "title": "Option 3",
+        "text": [
+          "**bold**",
+          "*italic*"
+        ]
+      }
+    ]
+  ]
+}

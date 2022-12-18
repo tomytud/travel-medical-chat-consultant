@@ -1,0 +1,20 @@
+{
+  "telegram": {
+    "text": "wähle",
+    "reply_markup": {
+        "on_time_keyboard": true,
+        "inline_keyboard": [
+        [
+          {
+            "text": "o1",
+            "callback_data": "opt_1"
+          },
+          {
+            "text": "o2",
+            "callback_data": "opt_2"
+          }
+]
+]
+      }
+  }
+}

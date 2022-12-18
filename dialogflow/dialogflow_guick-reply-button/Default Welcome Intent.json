@@ -1,0 +1,101 @@
+{
+  "id": "ff52cca5-9cc2-4d3b-ab67-7c061dad2806",
+  "name": "Default Welcome Intent",
+  "auto": true,
+  "condition": "",
+  "conditionalFollowupEvents": [],
+  "conditionalResponses": [],
+  "context": [],
+  "contexts": [],
+  "endInteraction": false,
+  "events": [
+    {
+      "name": "WELCOME"
+    }
+  ],
+  "fallbackIntent": false,
+  "liveAgentHandoff": false,
+  "parentId": null,
+  "followUpIntents": [],
+  "priority": 500000,
+  "responses": [
+    {
+      "action": "input.welcome",
+      "affectedContexts": [
+        {
+          "name": "await_start",
+          "lifespan": 1
+        },
+        {
+          "name": "DefaultWelcomeIntent-followup",
+          "lifespan": 2
+        }
+      ],
+      "parameters": [],
+      "defaultResponsePlatforms": {},
+      "messages": [
+        {
+          "type": "message",
+          "condition": "",
+          "speech": [
+            "Ich bin ein Reisemedizin-Assistent & werde in den nächsten 2 Minuten (auf das Arztgespräch vorbereiten.) Fragen zu relevanten Themen für länderspezifische Fernreisen stellen."
+          ]
+        },
+        {
+          "type": "message",
+          "condition": "",
+          "speech": [
+            "Im Anschluss an meine Fragen bin ich bereit weiterführende Informationen zu geben und auf ihre Fragen einzugehen."
+          ]
+        },
+        {
+          "type": "message",
+          "condition": "",
+          "speech": [
+            "Sind Sie bereit?"
+          ]
+        },
+        {
+          "type": "custom_payload",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "options": [
+                    {
+                      "text": "ja"
+                    },
+                    {
+                      "text": "nein"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "resetContexts": false
+    }
+  ],
+  "rootParentId": null,
+  "templates": [],
+  "userSays": [
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "hi",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "7bcf4589-5f5c-41ed-8926-6702fc0cefeb",
+      "updated": null
+    }
+  ],
+  "webhookForSlotFilling": false,
+  "webhookUsed": false
+}

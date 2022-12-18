@@ -1,0 +1,16 @@
+{
+  "richContent": [
+    [
+      {
+      "type": "button",
+            "icon": {
+            "type": "link",
+            "color": "#f4ab00"
+    },
+        "text": "malaria",
+        "link": "javascript:void(0);"
+
+      }
+    ]
+  ]
+}
